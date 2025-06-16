@@ -9,7 +9,7 @@
           v-for="app in apps"
           :key="app.path"
           :value="app.path"
-          @click="toPath(app.path)"
+          :to="app.path"
         >
           {{ app.name }}
         </t-menu-item>
@@ -48,10 +48,9 @@
 
 <script setup lang="ts">
 import {ref, watch} from 'vue'
-import {useRouter, useRoute} from 'vue-router'
+import {useRoute} from 'vue-router'
 
 const active = ref('/')
-const router = useRouter()
 const route = useRoute()
 
 const apps = [
@@ -99,9 +98,6 @@ watch(
   { immediate: true }
 )
 
-const toPath = (path: string) => {
-  router.push(path)
-}
 </script>
 
 <style scoped>

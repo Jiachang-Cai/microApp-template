@@ -6,6 +6,7 @@
       :name="appInfo.name"
       :url="appInfo.baseUrl"
       iframe
+      clear-data
     />
   </div>
 </template>
@@ -45,7 +46,6 @@ watch(
   (path) => {
     const name = extractAppName(path)
     const subPath = extractSubPath(path)
-
     const info = appsMap[name]
     if (info) {
       appInfo.value = info

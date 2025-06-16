@@ -4,6 +4,7 @@
 
 <script setup lang="ts">
 import {useRouter} from "vue-router";
+import {onBeforeUnmount} from 'vue'
 
 const router = useRouter();
 // 监听函数
@@ -13,7 +14,11 @@ const dataListener = (data: never) => {
 }
 
 // 监听数据变化
-window.microApp.addDataListener(dataListener)
+window.microApp.addDataListener(dataListener, true)
+
+onBeforeUnmount(() => {
+  window.microApp.clearDataListener()
+})
 </script>
 
 <style scoped>
